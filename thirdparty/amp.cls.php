@@ -25,7 +25,7 @@ class AMP
 	 */
 	public static function preload()
 	{
-		if ( ! function_exists( 'is_amp_endpoint' ) || is_admin() || ! isset( $_GET[ 'amp' ] ) ) return;
+		if ( ( function_exists( 'amp_is_request' ) && amp_is_request() ) || is_admin() || ( function_exists( 'ampforwp_is_amp_endpoint' ) && ampforwp_is_amp_endpoint() ) ) return;
 		! defined( 'LITESPEED_NO_PAGEOPTM' ) && define( 'LITESPEED_NO_PAGEOPTM', true );
 		! defined( 'LITESPEED_NO_LAZY' ) && define( 'LITESPEED_NO_LAZY', true );
 		! defined( 'LITESPEED_GUEST' ) && define( 'LITESPEED_GUEST', false );
